@@ -108,39 +108,90 @@ extension ObjectiveManipulationViewController {
         view.endEditing(true)
     }
     
-    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         switch section {
-        case 0:
-            guard let footer = view as? UITableViewHeaderFooterView else { return }
-            footer.textLabel?.text = "O título do objetivo deve ser sucinto e direto. Não dê títulos muito logos, apenas vá direto ao ponto com 1 ou 2 palavras."
-            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
-            footer.textLabel?.font = UIFont(name: footer.textLabel!.font.fontName, size: 13)
-            footer.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-            footer.textLabel?.numberOfLines = 0
-            footer.textLabel?.sizeToFit()
-        case 1:
-            guard let footer = view as? UITableViewHeaderFooterView else { return }
-            footer.textLabel?.text = "Seu objetivo pode ter máxima prioridade em sua vida ou apenas ser algo que você deseja alcançar mas que não seja prioritário."
-            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
-        case 2:
-            guard let footer = view as? UITableViewHeaderFooterView else { return }
-            footer.textLabel?.text = "A data de previsão deve ser realista e deve fazer sentido com o tempo que levará para dar cada passo em direção a ele."
-            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
-        case 3:
-            guard let footer = view as? UITableViewHeaderFooterView else { return }
-            footer.textLabel?.text = "Escreva o resultado desejado em seu objetivo. Detalhe com precisão e diretamente o que você deseja alcançar e em quanto tempo."
-            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+            case 2:
+            guard let header = view as? UITableViewHeaderFooterView else { return }
+            header.textLabel?.text = "DATA DE PREVISÃO"
+            header.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+            header.textLabel?.font = UIFont(name: header.textLabel!.font.fontName, size: 13)
         default:
             break
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        switch section {
+//        case 0:
+//            guard let footer = view as? UITableViewHeaderFooterView else { return }
+//            footer.textLabel?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+//            footer.textLabel?.text = "O título do objetivo deve ser sucinto e direto. Não dê títulos muito logos, apenas vá direto ao ponto com 1 ou 2 palavras."
+//            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+//            footer.textLabel?.font = UIFont(name: footer.textLabel!.font.fontName, size: 13)
+//            footer.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            footer.textLabel?.numberOfLines = 0
+//            footer.textLabel?.sizeToFit()
+//        case 1:
+//            guard let footer = view as? UITableViewHeaderFooterView else { return }
+//            footer.textLabel?.text = "Seu objetivo pode ter máxima prioridade em sua vida ou apenas ser algo que você deseja alcançar mas que não seja prioritário."
+//            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+//        case 2:
+//            guard let footer = view as? UITableViewHeaderFooterView else { return }
+//            footer.textLabel?.text = "A data de previsão deve ser realista e deve fazer sentido com o tempo que levará para dar cada passo em direção a ele."
+//            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+//        case 3:
+//            guard let footer = view as? UITableViewHeaderFooterView else { return }
+//            footer.textLabel?.text = "Escreva o resultado desejado em seu objetivo. Detalhe com precisão e diretamente o que você deseja alcançar e em quanto tempo."
+//            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+        default:
+            break
+        }
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 230
+//    }
+    
 //    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+////        switch section {
+////        case 0:
+////            let footer = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 28))
+////            footer.textLabel?.text = "sadfadfadadg"
+////            return footer
+////        default:
+////            break
+//
 //        switch section {
 //        case 0:
-//            let footer = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 28))
-//            footer.textLabel?.text = "sadfadfadadg"
-//            return footer
+//            let footer = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
+////            let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: footer.frame.height))
+////            footer.addSubview(label)
+////            footer.textLabel?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+//            footer.textLabel?.text = "O título do objetivo deve ser sucinto e direto. Não dê títulos muito logos, apenas vá direto ao ponto com 1 ou 2 palavras."
+//            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+//            footer.textLabel?.font = UIFont(name: footer.textLabel!.font.fontName, size: 13)
+//            footer.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            footer.textLabel?.numberOfLines = 0
+//            var label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
+//            label.backgroundColor = #colorLiteral(red: 0.9214683175, green: 0.9216262698, blue: 0.9214583635, alpha: 0)
+//            label.text = "O título do objetivo deve ser sucinto e direto. Não dê títulos muito logos, apenas vá direto ao ponto com 1 ou 2 palavras."
+//            label.font = UIFont(name: footer.textLabel!.font.fontName, size: 13)
+//            label.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            label.numberOfLines = 0
+//            return label
+////        //            footer.textLabel?.sizeToFit()
+////        case 1:
+////            guard let footer = view as? UITableViewHeaderFooterView else { return }
+////            footer.textLabel?.text = "Seu objetivo pode ter máxima prioridade em sua vida ou apenas ser algo que você deseja alcançar mas que não seja prioritário."
+////            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+////        case 2:
+////            guard let footer = view as? UITableViewHeaderFooterView else { return }
+////            footer.textLabel?.text = "A data de previsão deve ser realista e deve fazer sentido com o tempo que levará para dar cada passo em direção a ele."
+////            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
+////        case 3:
+////            guard let footer = view as? UITableViewHeaderFooterView else { return }
+////            footer.textLabel?.text = "Escreva o resultado desejado em seu objetivo. Detalhe com precisão e diretamente o que você deseja alcançar e em quanto tempo."
+////            footer.textLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2499197346)
 //        default:
 //            break
 //        }
