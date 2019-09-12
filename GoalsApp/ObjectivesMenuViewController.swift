@@ -13,7 +13,6 @@ import UserNotifications
 class ObjectivesMenuViewController: UICollectionViewController {
     
     var context: NSManagedObjectContext?
-//    var objective: Objective?
     
     var objectives = [Objective]()
 
@@ -41,6 +40,9 @@ class ObjectivesMenuViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if(objectives.count <= 0){
+//            self.setEmptyMessage()
+//        }
         return objectives.count
     }
     
@@ -130,6 +132,35 @@ class ObjectivesMenuViewController: UICollectionViewController {
     func deleteNotification(identifier: String){
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+    
+    func setEmptyMessage() {
+        let messageContainer = UIView()
+        messageContainer.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        let messageImage = UIImageView(image: #imageLiteral(resourceName: "EmptyMessage"))
+        messageContainer.addSubview(messageImage)
+        self.view.addSubview(messageContainer)
+         messageContainer.frame = CGRect(x: 0, y: 0, width: messageImage.frame.width, height: messageImage.frame.height)
+        let xConstraint = NSLayoutConstraint(item: messageContainer, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        
+//        let yConstraint = NSLayoutConstraint(item: messageContainer, attribute: .centerY, relatedBy: .equal, toItem: self.collectionView, attribute: .centerY, multiplier: 1, constant: 0)
+//
+        NSLayoutConstraint.activate([xConstraint])
+        
+//        messageContainer.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+//        let targetImage = UIImageView(image: #imageLiteral(resourceName: "Target Image"))
+//        targetImage.frame = CGRect(x: 0, y: 0, width: targetImage.frame.width, height: targetImage.frame.height)
+//        messageContainer.addSubview(targetImage)
+//        let messageTitle = UILabel(frame: CGRect(x: 0, y: 0, width: messageContainer.bounds.size.width, height: messageContainer.bounds.size.height))
+//        messageTitle.text = "Sem Objetivos"
+//        messageTitle.textColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+//        messageTitle.numberOfLines = 0
+//        messageTitle.textAlignment = .center
+//        messageContainer.addSubview(messageTitle)
+//        self.view.addSubview(messageContainer)
+//        messageContainer.frame = CGRect(x: self.view.frame.width/4, y: self.view.frame.width/2, width: targetImage.frame.width, height: targetImage.frame.height)
+        
+        
     }
 }
 

@@ -35,26 +35,10 @@ extension ObjectiveManipulationViewController{
                     }
                 }
             } else {
-                print("Impossível mandar notificação - permissão negada")
+                fatalError("Impossível mandar notificação - permissão negada")
             }
         }
     }
     
-//    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footerView = UIView(frame: CGRect(x:0, y:0, width:tableView.frame.size.width, height: 40))
-////        footerView.backgroundColor = UIColor.lightGray
-//        
-//        switch(section) {
-//        case 0: // change only 3rd cell's footer
-//            let label = UILabel(frame: footerView.frame)
-//            label.text = "Dê um título ao objetivo que seja susinto e que o defina bem."
-//            label.textColor = UIColor.lightGray
-//            label.sizeToFit()
-//            label.font.withSize(13)
-//            footerView.addSubview(label)
-//            return footerView
-//        default: break
-//        }
-//        return nil
-//    }
+    
 }

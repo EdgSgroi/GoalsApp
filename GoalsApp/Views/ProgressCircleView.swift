@@ -3,6 +3,7 @@
 //  GoalsApp
 //
 //  Created by Edgar Sgroi on 17/07/19.
+//  Based on the project of Joaquim Pessoa Filho <3
 //  Copyright © 2019 Edgar Sgroi. All rights reserved.
 //
 

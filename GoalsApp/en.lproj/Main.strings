@@ -1,0 +1,120 @@
+
+/* Class = "UILabel"; text = "Prevision:"; ObjectID = "0cw-Q3-WUb"; */
+"0cw-Q3-WUb.text" = "Prevision:";
+
+/* Class = "UIBarButtonItem"; title = "OK"; ObjectID = "4Em-Ui-VUm"; */
+"4Em-Ui-VUm.title" = "OK";
+
+/* Class = "UILabel"; text = "06/09/2020"; ObjectID = "4ZG-mK-9eN"; */
+"4ZG-mK-9eN.text" = "06/09/2020";
+
+/* Class = "UITextField"; placeholder = "Detalhes"; ObjectID = "6Az-yO-MRC"; */
+"6Az-yO-MRC.placeholder" = "Detalhes";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "8wk-Z6-LyG"; */
+"8wk-Z6-LyG.title" = "Title";
+
+/* Class = "UILabel"; text = "Details:"; ObjectID = "9Tt-YQ-G3m"; */
+"9Tt-YQ-G3m.text" = "Details:";
+
+/* Class = "UITextField"; placeholder = "Título"; ObjectID = "Ame-rI-4Wf"; */
+"Ame-rI-4Wf.placeholder" = "Título";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "DMZ-io-cyu"; */
+"DMZ-io-cyu.title" = "Title";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "G7u-3s-m5O"; */
+"G7u-3s-m5O.title" = "Title";
+
+/* Class = "UILabel"; text = "365 dias"; ObjectID = "GNC-Dn-RIe"; */
+"GNC-Dn-RIe.text" = "365 dias";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "H2k-Ls-ZpL"; */
+"H2k-Ls-ZpL.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "H2k-Ls-ZpL"; */
+"H2k-Ls-ZpL.headerTitle" = " ";
+
+/* Class = "UILabel"; text = "Prevision date:"; ObjectID = "RCN-Tc-HUs"; */
+"RCN-Tc-HUs.text" = "Prevision date:";
+
+/* Class = "UILabel"; text = "17/10/2019"; ObjectID = "ROH-SN-hRT"; */
+"ROH-SN-hRT.text" = "17/10/2019";
+
+/* Class = "UILabel"; text = "GOALS"; ObjectID = "TAy-Qe-U0u"; */
+"TAy-Qe-U0u.text" = "GOALS";
+
+/* Class = "UILabel"; text = "100/100"; ObjectID = "Tri-m9-wqU"; */
+"Tri-m9-wqU.text" = "100/100";
+
+/* Class = "UISegmentedControl"; UZi-XH-s4G.segmentTitles[0] = "Not Completed"; ObjectID = "UZi-XH-s4G"; */
+"UZi-XH-s4G.segmentTitles[0]" = "Not Completed";
+
+/* Class = "UISegmentedControl"; UZi-XH-s4G.segmentTitles[1] = "Completed"; ObjectID = "UZi-XH-s4G"; */
+"UZi-XH-s4G.segmentTitles[1]" = "Completed";
+
+/* Class = "UILabel"; text = "Important:"; ObjectID = "Vcn-VY-upp"; */
+"Vcn-VY-upp.text" = "Important:";
+
+/* Class = "UILabel"; text = "5/10 goals"; ObjectID = "a0B-FT-aJ9"; */
+"a0B-FT-aJ9.text" = "5/10 goals";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "b3J-Bg-4FI"; */
+"b3J-Bg-4FI.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "b3J-Bg-4FI"; */
+"b3J-Bg-4FI.headerTitle" = " ";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "cJs-w7-etj"; */
+"cJs-w7-etj.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "cOX-eQ-HO2"; */
+"cOX-eQ-HO2.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "cOX-eQ-HO2"; */
+"cOX-eQ-HO2.headerTitle" = " ";
+
+/* Class = "UILabel"; text = "Importante"; ObjectID = "e48-49-St1"; */
+"e48-49-St1.text" = "Importante";
+
+/* Class = "UILabel"; text = "Título"; ObjectID = "ecG-5j-HI8"; */
+"ecG-5j-HI8.text" = "Título";
+
+/* Class = "UINavigationItem"; title = "Objectives"; ObjectID = "gPY-Zz-vgm"; */
+"gPY-Zz-vgm.title" = "Objectives";
+
+/* Class = "UILabel"; text = "Days Remaining:"; ObjectID = "hHq-2f-0JL"; */
+"hHq-2f-0JL.text" = "Days Remaining:";
+
+/* Class = "UILabel"; text = "50%"; ObjectID = "k4v-6j-yre"; */
+"k4v-6j-yre.text" = "50%";
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "lbX-OJ-Wy8"; */
+"lbX-OJ-Wy8.title" = "Add";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "mac-OE-iCA"; */
+"mac-OE-iCA.normalTitle" = "Add";
+
+/* Class = "UILabel"; text = "Concluded Goals:"; ObjectID = "o1t-r5-mur"; */
+"o1t-r5-mur.text" = "Concluded Goals:";
+
+/* Class = "UIBarButtonItem"; title = "OK"; ObjectID = "psf-GM-yGn"; */
+"psf-GM-yGn.title" = "OK";
+
+/* Class = "UILabel"; text = "Carro"; ObjectID = "t3b-qJ-ww6"; */
+"t3b-qJ-ww6.text" = "Carro";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "tZ5-AX-RY2"; */
+"tZ5-AX-RY2.title" = "Edit";
+
+/* Class = "UILabel"; text = "50%"; ObjectID = "wPE-Tz-1Da"; */
+"wPE-Tz-1Da.text" = "50%";
+
+/* Class = "UITableViewSection"; footerTitle = " "; ObjectID = "yjJ-3h-pwz"; */
+"yjJ-3h-pwz.footerTitle" = " ";
+
+/* Class = "UITableViewSection"; headerTitle = " "; ObjectID = "yjJ-3h-pwz"; */
+"yjJ-3h-pwz.headerTitle" = " ";
+
+/* Class = "UILabel"; text = "01/10/2019"; ObjectID = "zbQ-oX-Zpy"; */
+"zbQ-oX-Zpy.text" = "01/10/2019";

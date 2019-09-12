@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  GoalsApp
+
+  Created by Edgar Sgroi on 07/08/19.
+  Copyright © 2019 Edgar Sgroi. All rights reserved.
+*/
+
+"Objetives Title" = "Objetivos";
+"Add Nav Bar" = "Adicionar";
+"Edit Nav Bar" = "Editar";
+"Prevision:" = "Previsão:";
+"Days Remaining:" = "Dias Restantes:";
+"Concluded Days:" = "Metas Concluídas:";
+"Important:" = "Importante:";
+"Details:" = "Detalhes:";
+"Not Completed" = "Não Concluídas";
+"Completed" = "Concluídas";
+"GOALS" = "METAS";
+"Add" = "Adicionar";
+"Prevision date:" = "Data de previsão";
