@@ -186,7 +186,7 @@ class ObjectiveViewController : UIViewController, UITableViewDataSource, UITable
         cell.conclueded = goals[indexPath.row].concluded
         cell.lblTitulo.text = goals[indexPath.row].title
         cell.lblPrevisionDate.text = formatter.string(from: goals[indexPath.row].previsionDate! as Date)
-        cell.lblInfo.text = goalsShown == "Not Concluded Goals" ? String(calculateRemainingDays(date: goals[indexPath.row].previsionDate!)) + " dias" : formatter.string(from: goals[indexPath.row].conclusionDate! as Date)
+        cell.lblInfo.text = goalsShown == "Not Concluded Goals" ? String(calculateRemainingDays(date: goals[indexPath.row].previsionDate!)) + " days" : formatter.string(from: goals[indexPath.row].conclusionDate! as Date)
         if goalsShown == "Concluded Goals" {
             let prevision = goals[indexPath.row].previsionDate! as Date
             let conclusion = goals[indexPath.row].conclusionDate! as Date
