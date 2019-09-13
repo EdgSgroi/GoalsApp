@@ -393,21 +393,26 @@
                             </tableViewSection>
                             <tableViewSection headerTitle=" " footerTitle=" " id="yjJ-3h-pwz">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3rT-IH-lOZ">
-                                        <rect key="frame" x="0.0" y="454" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="287" id="3rT-IH-lOZ">
+                                        <rect key="frame" x="0.0" y="454" width="414" height="287"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rT-IH-lOZ" id="uLb-a0-cmj">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="286.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-yO-MRC">
-                                                    <rect key="frame" x="20" y="6" width="374" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write the details of this objective." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2tq-IS-dr8">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="286.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2tq-IS-dr8" firstAttribute="leading" secondItem="uLb-a0-cmj" secondAttribute="leadingMargin" id="Pbw-D3-rc6"/>
+                                                <constraint firstItem="2tq-IS-dr8" firstAttribute="top" secondItem="uLb-a0-cmj" secondAttribute="top" id="YgA-vg-mfo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2tq-IS-dr8" secondAttribute="trailing" id="hLg-gw-gmy"/>
+                                                <constraint firstAttribute="bottom" secondItem="2tq-IS-dr8" secondAttribute="bottom" id="iTn-zx-pMx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -424,13 +429,13 @@
                     <connections>
                         <outlet property="pckrPrevisionDate" destination="l4O-TG-1WJ" id="PxH-ah-raV"/>
                         <outlet property="swtchRating" destination="tBz-1s-iIS" id="8Em-AM-onc"/>
-                        <outlet property="tfldDetails" destination="6Az-yO-MRC" id="hpz-64-Y9j"/>
                         <outlet property="tfldTitle" destination="Ame-rI-4Wf" id="Nf7-uX-QCN"/>
+                        <outlet property="txtDetails" destination="2tq-IS-dr8" id="w2X-MM-ezD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhT-T6-nxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2486" y="244"/>
+            <point key="canvasLocation" x="2485.507246376812" y="243.75"/>
         </scene>
         <!--Objectives-->
         <scene sceneID="7bQ-9U-7yd">
@@ -570,7 +575,7 @@
         <image name="MarkedRatePoint" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dt9-RL-yMS"/>
+        <segue reference="SgY-i4-Mz9"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.39281469583511353" green="0.71173268556594849" blue="0.8274686336517334" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
