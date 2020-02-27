@@ -148,6 +148,10 @@ class ObjectivesMenuViewController: UICollectionViewController {
         messageContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         messageContainer.widthAnchor.constraint(equalToConstant: messageImage.frame.width).isActive = true
         messageContainer.heightAnchor.constraint(equalToConstant: messageImage.frame.height).isActive = true
+        
+        let buttonAdd = UIButton(frame: .zero)
+        buttonAdd.imageView?.image = #imageLiteral(resourceName: "EmptyAddButton")
+        self.messageContainer.addSubview(buttonAdd)
     }
 }
 
