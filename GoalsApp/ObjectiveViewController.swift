@@ -186,12 +186,10 @@ class ObjectiveViewController : UIViewController, UITableViewDataSource, UITable
         cell.conclueded = goals[indexPath.row].concluded
         cell.lblTitulo.text = goals[indexPath.row].title
         cell.lblPrevisionDate.text = formatter.string(from: goals[indexPath.row].previsionDate! as Date)
-        cell.lblInfo.text = goalsShown == "Not Concluded Goals" ? String(calculateRemainingDays(date: goals[indexPath.row].previsionDate!)) + " dias" : formatter.string(from: goals[indexPath.row].conclusionDate! as Date)
+        cell.lblInfo.text = goalsShown == "Not Concluded Goals" ? String(calculateRemainingDays(date: goals[indexPath.row].previsionDate!)) + " days" : formatter.string(from: goals[indexPath.row].conclusionDate! as Date)
         if goalsShown == "Concluded Goals" {
             let prevision = goals[indexPath.row].previsionDate! as Date
             let conclusion = goals[indexPath.row].conclusionDate! as Date
-            print(prevision)
-            print(conclusion)
             if (prevision >= conclusion) {
                 cell.lblInfo.textColor = UIColor.green
             }else{
@@ -225,7 +223,8 @@ class ObjectiveViewController : UIViewController, UITableViewDataSource, UITable
                 fatalError("404 - Non Entity")
             }
         }
-        goals = goalsShown == "Not Concluded Goals" ? notConcludedGoals.reversed() : concludedGoals
+//        goals = goalsShown == "Not Concluded Goals" ? notConcludedGoals.reversed() : concludedGoals
+        goals = goalsShown == "Not Concluded Goals" ? notConcludedGoals.sorted(by: { calculateRemainingDays(date: $0.previsionDate!) < calculateRemainingDays(date: $1.previsionDate!) }) : concludedGoals
         goalTableView.reloadData()
         self.updateData()
     }
