@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F0DEF572437AFE300D62AB3 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DEF562437AFE300D62AB3 /* CoreDataService.swift */; };
+		4F0DEF5A2437B13D00D62AB3 /* ObjectivesMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DEF592437B13D00D62AB3 /* ObjectivesMenuViewModel.swift */; };
+		4F0DEF5C2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DEF5B2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift */; };
+		4F0DEF5E2437EFD400D62AB3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0DEF5D2437EFD400D62AB3 /* Extensions.swift */; };
 		4F26B6FD22FB46DB0062AC71 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F26B6FF22FB46DB0062AC71 /* Localizable.strings */; };
 		4F4012DE22DFB53800CCC26C /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012DD22DFB53800CCC26C /* ProgressCircleView.swift */; };
 		4F4012EE22E105E900CCC26C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012EA22E105E900CCC26C /* Goal+CoreDataClass.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F0DEF562437AFE300D62AB3 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		4F0DEF592437B13D00D62AB3 /* ObjectivesMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesMenuViewModel.swift; sourceTree = "<group>"; };
+		4F0DEF5B2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveManipulationViewModel.swift; sourceTree = "<group>"; };
+		4F0DEF5D2437EFD400D62AB3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4F26B6F822FB44E20062AC71 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4F26B6FE22FB46DB0062AC71 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F26B70022FB480D0062AC71 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -62,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F0DEF582437B12300D62AB3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F0DEF592437B13D00D62AB3 /* ObjectivesMenuViewModel.swift */,
+				4F0DEF5B2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4F26B6FA22FB45F40062AC71 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,19 +95,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4F4012E122E1051F00CCC26C /* Controllers */ = {
+		4F4012E122E1051F00CCC26C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				4FDB445E22DE6F22000EA748 /* ObjectivesMenuViewController.swift */,
 				4F4012FA22E243CD00CCC26C /* ObjectiveManipulationViewController.swift */,
 				4F4012FC22E25B0A00CCC26C /* ObjectiveViewController.swift */,
 			);
-			name = Controllers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		4F4012F222E105F800CCC26C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4F0DEF562437AFE300D62AB3 /* CoreDataService.swift */,
 				4F4012EA22E105E900CCC26C /* Goal+CoreDataClass.swift */,
 				4F4012EB22E105E900CCC26C /* Goal+CoreDataProperties.swift */,
 				4F4012EC22E105E900CCC26C /* Objective+CoreDataClass.swift */,
@@ -128,7 +146,9 @@
 		4FDB445B22DE6F22000EA748 /* GoalsApp */ = {
 			isa = PBXGroup;
 			children = (
-				4F4012E122E1051F00CCC26C /* Controllers */,
+				4F0DEF5D2437EFD400D62AB3 /* Extensions.swift */,
+				4F0DEF582437B12300D62AB3 /* ViewModels */,
+				4F4012E122E1051F00CCC26C /* ViewControllers */,
 				4F4012F522E1089200CCC26C /* Models */,
 				4F4012DC22DFB50100CCC26C /* Views */,
 				4F4012F222E105F800CCC26C /* CoreData */,
@@ -216,17 +236,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0DEF572437AFE300D62AB3 /* CoreDataService.swift in Sources */,
 				4F4012FF22E8C78000CCC26C /* GoalTableViewCell.swift in Sources */,
 				4F4012FD22E25B0A00CCC26C /* ObjectiveViewController.swift in Sources */,
 				4F4012EE22E105E900CCC26C /* Goal+CoreDataClass.swift in Sources */,
 				4F4012FB22E243CD00CCC26C /* ObjectiveManipulationViewController.swift in Sources */,
 				4F4012F422E1080100CCC26C /* ObjectiveCardCell.swift in Sources */,
 				4FDB446522DE6F22000EA748 /* GoalsApp.xcdatamodeld in Sources */,
+				4F0DEF5C2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift in Sources */,
+				4F0DEF5A2437B13D00D62AB3 /* ObjectivesMenuViewModel.swift in Sources */,
 				4F4012EF22E105E900CCC26C /* Goal+CoreDataProperties.swift in Sources */,
 				4F4012F022E105E900CCC26C /* Objective+CoreDataClass.swift in Sources */,
 				4F4012DE22DFB53800CCC26C /* ProgressCircleView.swift in Sources */,
 				4FDB445F22DE6F22000EA748 /* ObjectivesMenuViewController.swift in Sources */,
 				4FDB445D22DE6F22000EA748 /* AppDelegate.swift in Sources */,
+				4F0DEF5E2437EFD400D62AB3 /* Extensions.swift in Sources */,
 				4F4012F122E105E900CCC26C /* Objective+CoreDataProperties.swift in Sources */,
 				4F40130122EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift in Sources */,
 			);

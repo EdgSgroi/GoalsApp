@@ -12,17 +12,31 @@ import UserNotifications
 
 class ObjectivesMenuViewController: UICollectionViewController {
     
-    var context: NSManagedObjectContext?
-    
-    var objectives = [Objective]()
+//    var context: NSManagedObjectContext?
     
     let messageContainer = UIView()
-
+    
+    var viewModel: ObjectivesMenuViewModel!
+    
+//    init() {
+//        super.init(nibName: "ObjectivesMenuViewController", bundle: nil)
+//        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+//    }
+    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+        NotificationCenter.default.addObserver(self,
+        selector: #selector(reloadUI),
+        name: .updateObjectives,
+        object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +44,7 @@ class ObjectivesMenuViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "ShowObjective", sender: objectives[indexPath.row])
+        self.performSegue(withIdentifier: "ShowObjective", sender: viewModel.getObjective(at: indexPath))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,13 +56,15 @@ class ObjectivesMenuViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(objectives.count)
-        if(objectives.count <= 0){
+        //MUDAR
+        print(viewModel.rowsNumber())
+        if(viewModel.rowsNumber() <= 0){
             self.setEmptyMessage()
         } else {
             messageContainer.removeFromSuperview()
         }
-        return objectives.count
+        
+        return viewModel.rowsNumber()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,20 +82,17 @@ class ObjectivesMenuViewController: UICollectionViewController {
         cell.layer.shadowRadius = 2.0
         cell.layer.shadowOpacity = 0.5
         cell.layer.masksToBounds = false
-        let totalGoals = objectives[indexPath.row].relationshipObjectiveGoal?.allObjects.count ?? 0
-        var concludedGoals: Int! = 0
-        var notConcludedGoals: Int! = 0
-        if let goals = objectives[indexPath.row].relationshipObjectiveGoal?.allObjects as? [Goal]{
-            for g in goals{
-                concludedGoals += g.concluded ? 1 : 0
-                notConcludedGoals += g.concluded ? 0 : 1
-            }
-        }
+        // APENAS PARA TESTE - REMOVER TODOS OS OBJ
+        let obj = viewModel.getObjective(at: indexPath)
+        //----------------------------------------------
+        let totalGoals: Int = viewModel.getTotalGoals(fromObjective: indexPath)
+        let concludedGoals: Int = viewModel.getConcludedGoalsNumber(fromObjectiveAt: indexPath)
+        let notConcludedGoals: Int = totalGoals - concludedGoals
         cell.objectiveIndexPath = indexPath
-        cell.id = objectives[indexPath.row].id
-        cell.rating = objectives[indexPath.row].rating
-        cell.imgRatingMark.image = objectives[indexPath.row].rating == false ? #imageLiteral(resourceName: "UnmarkedRelevancyPoint") : #imageLiteral(resourceName: "MarkedRatePoint")
-        cell.lblTitle.text = objectives[indexPath.row].title
+        cell.id = viewModel.getObjective(at: indexPath).id
+        cell.rating = obj.rating
+        cell.imgRatingMark.image = obj.rating == false ? #imageLiteral(resourceName: "UnmarkedRelevancyPoint") : #imageLiteral(resourceName: "MarkedRatePoint")
+        cell.lblTitle.text = obj.title
         cell.lblConclusionPercentage.text = String(Int(((concludedGoals * 100) / (totalGoals <= 0 ? 1 : totalGoals)))) + "%"
         cell.progressCircle.progressValue = CGFloat(((Float(concludedGoals) * 100) / Float(totalGoals <= 0 ? 1 : totalGoals)) / 100)
         cell.lblGoalsInfo.text = String(concludedGoals) + "/" + String(totalGoals) + " metas"
@@ -102,11 +115,13 @@ class ObjectivesMenuViewController: UICollectionViewController {
         
         alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { (action) in
 //            let centerNotification = UNUserNotificationCenter.current()
-            self.deleteNotification(identifier: self.objectives[cell.objectiveIndexPath.row].id!.uuidString)
+            self.deleteNotification(identifier: self.viewModel.getObjective(at: cell.objectiveIndexPath).id!.uuidString)
 //            centerNotification.removeDeliveredNotifications(withIdentifiers: [self.objectives[cell.objectiveIndexPath.row].id!.uuidString])
-            self.context?.delete(self.objectives[cell.objectiveIndexPath.row])
-            self.objectives.remove(at: cell.objectiveIndexPath.row)
+            self.viewModel.deleteObject(at: cell.objectiveIndexPath)
+//            self.context?.delete(self.viewModel.getObjective(at: cell.objectiveIndexPath))
+//            self.viewModel.removeObject(at: cell.objectiveIndexPath)
             self.collectionView.reloadData()
+            //MUDAR AQUI!
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
             appDelegate.saveContext()
             
@@ -117,20 +132,8 @@ class ObjectivesMenuViewController: UICollectionViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func createCells(){
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Objective")
-        request.returnsObjectsAsFaults = false
-        if let context = context{
-            do{
-                let result = try context.fetch(request)
-                objectives = []
-                for data in result as! [NSManagedObject]{
-                    objectives.append(data as! Objective)
-                }
-            }catch{
-                fatalError("404 - Non Entity")
-            }
-        }
+    func createCells() {
+        viewModel.updateObjectives()
         collectionView.reloadData()
     }
     
@@ -152,6 +155,10 @@ class ObjectivesMenuViewController: UICollectionViewController {
         let buttonAdd = UIButton(frame: .zero)
         buttonAdd.imageView?.image = #imageLiteral(resourceName: "EmptyAddButton")
         self.messageContainer.addSubview(buttonAdd)
+    }
+    
+    @objc func reloadUI() {
+        collectionView.reloadData()
     }
 }
 

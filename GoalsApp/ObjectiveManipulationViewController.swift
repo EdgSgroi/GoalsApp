@@ -12,8 +12,8 @@ import CoreData
 
 class ObjectiveManipulationViewController : UITableViewController, UITextFieldDelegate{
     
-    var context : NSManagedObjectContext?
-    
+    var context: NSManagedObjectContext?
+    var viewModel: ObjectiveManipulationViewModel!
     
     @IBOutlet weak var tfldTitle: UITextField!
     @IBOutlet weak var swtchRating: UISwitch!
@@ -24,11 +24,14 @@ class ObjectiveManipulationViewController : UITableViewController, UITextFieldDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        viewModel = ObjectiveManipulationViewModel(context: context, appDelegate: appDelegate)
         tfldTitle.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         pckrPrevisionDate.minimumDate = Date()
-        if(objectiveForEditing != nil){
+        if(objectiveForEditing != nil) {
             prepareForEditing()
         }
     }
@@ -36,7 +39,7 @@ class ObjectiveManipulationViewController : UITableViewController, UITextFieldDe
     @IBAction func btnOK(_ sender: Any) {
         if tfldTitle.text == nil || tfldTitle.text == "" {
             print("num deu")
-        }else if(objectiveForEditing == nil){
+        }else if(objectiveForEditing == nil) {
             createObjective()
             navigationController?.popViewController(animated: true)
         }else{
@@ -44,18 +47,12 @@ class ObjectiveManipulationViewController : UITableViewController, UITextFieldDe
         }
     }
     
-    func createObjective(){
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let objective = NSEntityDescription.insertNewObject(forEntityName: "Objective", into: context!) as! Objective
-        objective.id = UUID()
-        objective.title = tfldTitle.text
-        objective.rating = swtchRating.isOn
-        objective.previsionDate = pckrPrevisionDate.date as NSDate
-        objective.details = txtDetails.text
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.saveContext()
-        createNotification(title: objective.title!, body: "Hoje termina o prazo de conclusão do seu objetivo. Veja sua evolução!", time: objective.previsionDate! as Date, identifier: objective.id!.uuidString)
+    func createObjective() {
+        viewModel.title = tfldTitle.text ?? ""
+        viewModel.rating = swtchRating.isOn
+        viewModel.previsionDate = pckrPrevisionDate.date
+        viewModel.details = txtDetails.text
+        viewModel.createNewObjective()
     }
     
     func updateObjectiveInCoreData(){

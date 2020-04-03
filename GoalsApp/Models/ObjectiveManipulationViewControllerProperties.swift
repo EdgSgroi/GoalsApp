@@ -25,7 +25,6 @@ extension ObjectiveManipulationViewController{
                 content.badge = 1
                 print(time.timeIntervalSinceNow)
                 let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time.timeIntervalSinceNow + 5000, repeats: false)
-//                let trigger = UNCalendarNotificationTrigger(dateMatching: makeDate(year: time.da, month: <#T##Int#>, day: <#T##Int#>, hr: <#T##Int#>), repeats: false)
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
                 
                 let center = UNUserNotificationCenter.current()
