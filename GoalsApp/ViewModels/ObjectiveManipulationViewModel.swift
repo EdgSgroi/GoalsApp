@@ -11,7 +11,8 @@ import CoreData
 import UserNotifications
 
 protocol ObjectiveManipulationViewDelegate {
-    func saveNewObjective(_ completion: @escaping () -> Void)
+//    func saveNewObjective(objective: Objective, completion: @escaping (Result<Any, Error>) -> Void)
+    func updateObjective(objective: Objective, _ completion: @escaping (Result<Any, Error>) -> Void)
 }
 
 class ObjectiveManipulationViewModel {
@@ -32,15 +33,37 @@ class ObjectiveManipulationViewModel {
     }
     
     func createNewObjective() {
+//        let service = CoreDataService(context: context)
+        
         let objective = NSEntityDescription.insertNewObject(forEntityName: "Objective", into: context) as! Objective
         objective.id = id
         objective.title = title
         objective.rating = rating
         objective.previsionDate = previsionDate as NSDate
         objective.details = details
+        
 
         appDelegate.saveContext()
         createNewNotification(title: title, body: "Hoje termina o prazo de conclusão do seu objetivo. Veja sua evolução!", time: previsionDate as Date, identifier: id.uuidString)
+    }
+    
+    func updateObjective(objective: Objective) {
+        let service = CoreDataService(context: context)
+        objective.id = id
+        objective.title = title
+        objective.rating = rating
+        objective.previsionDate = previsionDate as NSDate
+        objective.details = details
+        
+        service.updateObjective(objective: objective) {(result) in
+            switch result {
+            case .success(let message):
+                print(message)
+                self.appDelegate.saveContext()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func createNewNotification(title: String, body: String, time: Date, identifier: String) {

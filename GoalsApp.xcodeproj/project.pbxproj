@@ -22,6 +22,8 @@
 		4F4012FD22E25B0A00CCC26C /* ObjectiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012FC22E25B0A00CCC26C /* ObjectiveViewController.swift */; };
 		4F4012FF22E8C78000CCC26C /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012FE22E8C78000CCC26C /* GoalTableViewCell.swift */; };
 		4F40130122EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40130022EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift */; };
+		4FA914FB243D22B800391BCE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA914FA243D22B800391BCE /* Coordinator.swift */; };
+		4FA914FD243D23D500391BCE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA914FC243D23D500391BCE /* MainCoordinator.swift */; };
 		4FDB445D22DE6F22000EA748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB445C22DE6F22000EA748 /* AppDelegate.swift */; };
 		4FDB445F22DE6F22000EA748 /* ObjectivesMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDB445E22DE6F22000EA748 /* ObjectivesMenuViewController.swift */; };
 		4FDB446222DE6F22000EA748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB446022DE6F22000EA748 /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		4F4012FC22E25B0A00CCC26C /* ObjectiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveViewController.swift; sourceTree = "<group>"; };
 		4F4012FE22E8C78000CCC26C /* GoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
 		4F40130022EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveManipulationViewControllerProperties.swift; sourceTree = "<group>"; };
+		4FA914FA243D22B800391BCE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4FA914FC243D23D500391BCE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		4FDB445922DE6F22000EA748 /* GoalsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoalsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDB445C22DE6F22000EA748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FDB445E22DE6F22000EA748 /* ObjectivesMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesMenuViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +131,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4FA914F9243D21B700391BCE /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4FA914FA243D22B800391BCE /* Coordinator.swift */,
+				4FA914FC243D23D500391BCE /* MainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4FDB445022DE6F22000EA748 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				4F0DEF5D2437EFD400D62AB3 /* Extensions.swift */,
+				4FA914F9243D21B700391BCE /* Coordinator */,
 				4F0DEF582437B12300D62AB3 /* ViewModels */,
 				4F4012E122E1051F00CCC26C /* ViewControllers */,
 				4F4012F522E1089200CCC26C /* Models */,
@@ -244,11 +258,13 @@
 				4F4012F422E1080100CCC26C /* ObjectiveCardCell.swift in Sources */,
 				4FDB446522DE6F22000EA748 /* GoalsApp.xcdatamodeld in Sources */,
 				4F0DEF5C2437DFA000D62AB3 /* ObjectiveManipulationViewModel.swift in Sources */,
+				4FA914FB243D22B800391BCE /* Coordinator.swift in Sources */,
 				4F0DEF5A2437B13D00D62AB3 /* ObjectivesMenuViewModel.swift in Sources */,
 				4F4012EF22E105E900CCC26C /* Goal+CoreDataProperties.swift in Sources */,
 				4F4012F022E105E900CCC26C /* Objective+CoreDataClass.swift in Sources */,
 				4F4012DE22DFB53800CCC26C /* ProgressCircleView.swift in Sources */,
 				4FDB445F22DE6F22000EA748 /* ObjectivesMenuViewController.swift in Sources */,
+				4FA914FD243D23D500391BCE /* MainCoordinator.swift in Sources */,
 				4FDB445D22DE6F22000EA748 /* AppDelegate.swift in Sources */,
 				4F0DEF5E2437EFD400D62AB3 /* Extensions.swift in Sources */,
 				4F4012F122E105E900CCC26C /* Objective+CoreDataProperties.swift in Sources */,

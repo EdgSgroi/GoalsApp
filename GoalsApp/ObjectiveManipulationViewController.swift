@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
-import CoreData
+//import CoreData
 
 class ObjectiveManipulationViewController : UITableViewController, UITextFieldDelegate{
     
-    var context: NSManagedObjectContext?
+//    var context: NSManagedObjectContext?
     var viewModel: ObjectiveManipulationViewModel!
     
     @IBOutlet weak var tfldTitle: UITextField!
@@ -43,7 +43,18 @@ class ObjectiveManipulationViewController : UITableViewController, UITextFieldDe
             createObjective()
             navigationController?.popViewController(animated: true)
         }else{
-            updateObjectiveInCoreData()
+//            updateObjectiveInCoreData()
+            if let objective = objectiveForEditing {
+                viewModel.id = objective.id ?? UUID()
+                viewModel.title = tfldTitle.text ?? ""
+                viewModel.rating = swtchRating.isOn
+                viewModel.previsionDate = pckrPrevisionDate.date
+                viewModel.details = txtDetails.text
+                viewModel.updateObjective(objective: objective)
+                //Antes de dar o pop deve ser verificado se o objetivo foi salvo no CoreData, talvez isso só se resolva quando o Coordinators for implementado
+                navigationController?.popViewController(animated: true)
+                //---------------------------------------------------------------------------
+            }
         }
     }
     
@@ -55,31 +66,30 @@ class ObjectiveManipulationViewController : UITableViewController, UITextFieldDe
         viewModel.createNewObjective()
     }
     
-    func updateObjectiveInCoreData(){
-        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Objective")
-        request.returnsObjectsAsFaults = false
-        if let context = context{
-            do{
-                let result = try context.fetch(request)
-                for data in result as! [NSManagedObject]{
-                    if data.value(forKey: "id") as? UUID == objectiveForEditing?.id{
-                        data.setValue(tfldTitle.text, forKey: "title")
-                        data.setValue(swtchRating.isOn, forKey: "rating")
-                        data.setValue(pckrPrevisionDate.date, forKey: "previsionDate")
-                        data.setValue(txtDetails.text, forKey: "details")
-                    }
-                }
-                self.createNotification(title: tfldTitle.text!, body: "Hoje termina o prazo de conclusão do seu objetivo. Veja sua evolução!", time: pckrPrevisionDate.date, identifier: (objectiveForEditing?.id!.uuidString)!)
-            }catch{
-                fatalError("404 - Non Entity")
-            }
-        }
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.saveContext()
-        navigationController?.popViewController(animated: true)
-    }
+//    func updateObjectiveInCoreData() {
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Objective")
+//        request.returnsObjectsAsFaults = false
+//        if let context = context{
+//            do{
+//                let result = try context.fetch(request)
+//                for data in result as! [NSManagedObject]{
+//                    if data.value(forKey: "id") as? UUID == objectiveForEditing?.id{
+//                        data.setValue(tfldTitle.text, forKey: "title")
+//                        data.setValue(swtchRating.isOn, forKey: "rating")
+//                        data.setValue(pckrPrevisionDate.date, forKey: "previsionDate")
+//                        data.setValue(txtDetails.text, forKey: "details")
+//                    }
+//                }
+//                self.createNotification(title: tfldTitle.text!, body: "Hoje termina o prazo de conclusão do seu objetivo. Veja sua evolução!", time: pckrPrevisionDate.date, identifier: (objectiveForEditing?.id!.uuidString)!)
+//            }catch{
+//                fatalError("404 - Non Entity")
+//            }
+//        }
+//
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//        appDelegate.saveContext()
+//        navigationController?.popViewController(animated: true)
+//    }
     
     func prepareForEditing(){
         self.navigationItem.title = "Editar Objetivo"

@@ -16,13 +16,13 @@ struct CoreDataResponse {
 
 class CoreDataService {
     
-    var context: NSManagedObjectContext?
+    private let context: NSManagedObjectContext?
     
     init(context: NSManagedObjectContext?) {
         self.context = context
     }
     
-    func fetch(_ completion: @escaping (CoreDataResponse) -> Void) {
+    private func fetch(_ completion: @escaping (CoreDataResponse) -> Void) {
         var result: [NSManagedObject] = []
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Objective")
         request.returnsObjectsAsFaults = false
@@ -40,6 +40,32 @@ class CoreDataService {
             completion(CoreDataResponse(error: nil, result: result))
         }
     }
+    
+//    func save(_ completion: @escaping (Result<Any, Error?>) -> Void) {
+//        context.
+//    }
+    
+    private func update(request:NSFetchRequest<NSFetchRequestResult>,objective: Objective, _ completion: @escaping (Result<Any, Error>) -> Void) {
+        request.returnsObjectsAsFaults = false
+        if let context = context{
+            do{
+                let result = try context.fetch(request)
+                for data in result as! [NSManagedObject] {
+                    if data.value(forKey: "id") as? UUID == objective.id{
+                        data.setValue(objective.title, forKey: "title")
+                        data.setValue(objective.rating, forKey: "rating")
+                        data.setValue(objective.previsionDate, forKey: "previsionDate")
+                        data.setValue(objective.details, forKey: "details")
+                    }
+                }
+                DispatchQueue.main.async {
+                    completion(.success("Objective \(String(describing: objective.title)) updated"))
+                }
+            }catch{
+                completion(.failure(error))
+            }
+        }
+    }
 }
 
 extension CoreDataService: ObjectivesMenuViewDelegate {
@@ -50,4 +76,41 @@ extension CoreDataService: ObjectivesMenuViewDelegate {
             }
         })
     }
+}
+
+extension CoreDataService: ObjectiveManipulationViewDelegate {
+    
+//    func saveNewObjective(objective: Objective, completion: @escaping (Result<Any, Error>) -> Void) {
+//        save({ response in
+//            DispatchQueue.main.async {
+//                completion(response)
+//            }
+//        })
+//    }
+    
+//    func saveNewObjective(id: UUID, title: String, rating: Bool, previsionDate: Date, details: String, _ completion: @escaping (CoreDataResponse) -> Void) {
+//        save({ response in
+//            let objective = NSEntityDescription.insertNewObject(forEntityName: "Objective", into: self.context!) as! Objective
+//            objective.id = id
+//            objective.title = title
+//            objective.rating = rating
+//            objective.previsionDate = previsionDate as NSDate
+//            objective.details = details
+//            DispatchQueue.main.async {
+//                completion(response.result)
+//            }
+//        })
+//    }
+    
+    func updateObjective(objective: Objective, _ completion: @escaping (Result<Any, Error>) -> Void) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Objective")
+        request.returnsObjectsAsFaults = false
+        update(request: request, objective: objective) { (result) in
+            DispatchQueue.main.async {
+                completion(result)
+            }
+        }
+    }
+    
+    
 }

@@ -17,9 +17,11 @@ class ObjectivesMenuViewModel {
     
     var objectives: [Objective]
     var context: NSManagedObjectContext
+    var appDelegate: AppDelegate
     
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext, appDelegate: AppDelegate) {
         self.context = context
+        self.appDelegate = appDelegate
         objectives = []
     }
     
@@ -64,5 +66,6 @@ class ObjectivesMenuViewModel {
     func deleteObject(at indexPath: IndexPath) {
         self.context.delete(getObjective(at: indexPath))
         objectives.remove(at: indexPath.row)
+        appDelegate.saveContext()
     }
 }

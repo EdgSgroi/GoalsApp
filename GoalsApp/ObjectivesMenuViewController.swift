@@ -7,32 +7,30 @@
 //
 
 import UIKit
-import CoreData
 import UserNotifications
 
 class ObjectivesMenuViewController: UICollectionViewController {
-    
-//    var context: NSManagedObjectContext?
     
     let messageContainer = UIView()
     
     var viewModel: ObjectivesMenuViewModel!
     
-//    init() {
-//        super.init(nibName: "ObjectivesMenuViewController", bundle: nil)
-//        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
-//    }
+    init() {
+        super.init(nibName: "ObjectivesMenuViewController", bundle: nil)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, appDelegate: appDelegate)
+    }
     
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+//        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, appDelegate: appDelegate)
         NotificationCenter.default.addObserver(self,
         selector: #selector(reloadUI),
         name: .updateObjectives,
@@ -48,7 +46,7 @@ class ObjectivesMenuViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "ShowObjective"){
+        if(segue.identifier == "ShowObjective") {
             let objective = sender as! Objective
             let displayViewController = segue.destination as! ObjectiveViewController
             displayViewController.objectiveID = objective.id
@@ -63,7 +61,6 @@ class ObjectivesMenuViewController: UICollectionViewController {
         } else {
             messageContainer.removeFromSuperview()
         }
-        
         return viewModel.rowsNumber()
     }
     
@@ -71,7 +68,6 @@ class ObjectivesMenuViewController: UICollectionViewController {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ObjectiveCell", for: indexPath) as? ObjectiveCardCell {
             return makeCell(cell: cell, indexPath: indexPath)
         }
-        
         return UICollectionViewCell()
     }
     
@@ -87,7 +83,6 @@ class ObjectivesMenuViewController: UICollectionViewController {
         //----------------------------------------------
         let totalGoals: Int = viewModel.getTotalGoals(fromObjective: indexPath)
         let concludedGoals: Int = viewModel.getConcludedGoalsNumber(fromObjectiveAt: indexPath)
-        let notConcludedGoals: Int = totalGoals - concludedGoals
         cell.objectiveIndexPath = indexPath
         cell.id = viewModel.getObjective(at: indexPath).id
         cell.rating = obj.rating
@@ -109,24 +104,15 @@ class ObjectivesMenuViewController: UICollectionViewController {
         }
     }
     
+    //Refatorar Alert
     func showSimpleAlert(cell:ObjectiveCardCell) {
         let alert = UIAlertController(title: "Apagar objetivo", message: "Você deseja mesmo apagar esse objetivo e todos os seus dados?", preferredStyle: .actionSheet)
         
-        
         alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { (action) in
-//            let centerNotification = UNUserNotificationCenter.current()
             self.deleteNotification(identifier: self.viewModel.getObjective(at: cell.objectiveIndexPath).id!.uuidString)
-//            centerNotification.removeDeliveredNotifications(withIdentifiers: [self.objectives[cell.objectiveIndexPath.row].id!.uuidString])
             self.viewModel.deleteObject(at: cell.objectiveIndexPath)
-//            self.context?.delete(self.viewModel.getObjective(at: cell.objectiveIndexPath))
-//            self.viewModel.removeObject(at: cell.objectiveIndexPath)
             self.collectionView.reloadData()
-            //MUDAR AQUI!
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-            appDelegate.saveContext()
-            
         }))
-        
         
         alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertAction.Style.default, handler: { _ in }))
         self.present(alert, animated: true, completion: nil)
