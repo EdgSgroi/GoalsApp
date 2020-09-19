@@ -23,10 +23,10 @@ class ObjectivesMenuViewModel {
         self.context = context
         self.appDelegate = appDelegate
         objectives = []
+        updateObjectives(service: CoreDataService(context: context))
     }
     
-    func updateObjectives() {
-        let service = CoreDataService(context: context)
+    func updateObjectives(service: CoreDataService) {
         service.fetchData({ (result, error) in
             if let error = error {
                 print(error.localizedDescription)

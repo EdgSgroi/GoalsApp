@@ -69,7 +69,7 @@ class CoreDataService {
 }
 
 extension CoreDataService: ObjectivesMenuViewDelegate {
-    func fetchData(_ completion: @escaping ([NSManagedObject]?, Error?) -> Void) {
+    @objc func fetchData(_ completion: @escaping ([NSManagedObject]?, Error?) -> Void) {
         fetch({ response in
             DispatchQueue.main.async {
                 completion(response.result, response.error)

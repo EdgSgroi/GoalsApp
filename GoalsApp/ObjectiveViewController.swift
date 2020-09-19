@@ -127,7 +127,7 @@ class ObjectiveViewController : UIViewController, UITableViewDataSource, UITable
 //            displayViewController.prepareForEditing()
         }
     }
-    
+     
     @IBAction func btnAddGoal(_ sender: Any) {
         let alert = UIAlertController(title: "Nova Meta", message: "Sua meta deve ter título e número de dias que a representem na realidade.", preferredStyle: .alert)
         alert.addTextField(configurationHandler: { (titleTextField) in

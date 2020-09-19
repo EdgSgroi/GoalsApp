@@ -15,22 +15,22 @@ class ObjectivesMenuViewController: UICollectionViewController {
     
     var viewModel: ObjectivesMenuViewModel!
     
-    init() {
+    init(viewModel: ObjectivesMenuViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: "ObjectivesMenuViewController", bundle: nil)
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, appDelegate: appDelegate)
+        
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, appDelegate: appDelegate)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-//        viewModel = ObjectivesMenuViewModel(context: (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext, appDelegate: appDelegate)
         NotificationCenter.default.addObserver(self,
         selector: #selector(reloadUI),
         name: .updateObjectives,
@@ -55,7 +55,7 @@ class ObjectivesMenuViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //MUDAR
-        print(viewModel.rowsNumber())
+//        print(viewModel.rowsNumber())
         if(viewModel.rowsNumber() <= 0){
             self.setEmptyMessage()
         } else {
@@ -71,7 +71,7 @@ class ObjectivesMenuViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
-    func makeCell(cell:ObjectiveCardCell, indexPath:IndexPath) -> UICollectionViewCell{
+    func makeCell(cell:ObjectiveCardCell, indexPath:IndexPath) -> UICollectionViewCell {
         cell.layer.cornerRadius = 22
         cell.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2493846318)
         cell.layer.shadowOffset = CGSize(width: 2.5, height: 5.0)
@@ -119,8 +119,8 @@ class ObjectivesMenuViewController: UICollectionViewController {
     }
     
     func createCells() {
-        viewModel.updateObjectives()
-        collectionView.reloadData()
+        viewModel.updateObjectives(service: CoreDataService(context: viewModel.context))
+//        collectionView.reloadData()
     }
     
     func deleteNotification(identifier: String){
