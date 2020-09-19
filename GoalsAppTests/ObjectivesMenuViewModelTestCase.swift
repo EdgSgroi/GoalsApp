@@ -32,7 +32,21 @@ class ObjectivesMenuViewModelTestCase: XCTestCase {
     }
     
     func testUpdateObjectives() {
-        let notificationExpectation = expectation(forNotification: .updateObjectives, object: nil, handler: nil)
+        expectation(forNotification: .updateObjectives, object: nil, handler: nil)
+        sut.updateObjectives(service: coreDataServiceFake)
         waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testGetConcludedGoalsNumber() {
+        let objective = NSEntityDescription.insertNewObject(forEntityName: "Objective", into: context) as! Objective
+        let firstGoal = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: context) as! Goal
+        let secondGoal = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: context) as! Goal
+        firstGoal.concluded = true
+        secondGoal.concluded = false
+        objective.addToRelationshipObjectiveGoal(firstGoal)
+        objective.addToRelationshipObjectiveGoal(secondGoal)
+        sut.objectives = [objective]
+        let result = sut.getConcludedGoalsNumber(fromObjectiveAt: IndexPath(row: 0, section: 0))
+        XCTAssertEqual(result, 1)
     }
 }

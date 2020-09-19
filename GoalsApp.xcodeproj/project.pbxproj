@@ -22,7 +22,6 @@
 		4F4012FD22E25B0A00CCC26C /* ObjectiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012FC22E25B0A00CCC26C /* ObjectiveViewController.swift */; };
 		4F4012FF22E8C78000CCC26C /* GoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4012FE22E8C78000CCC26C /* GoalTableViewCell.swift */; };
 		4F40130122EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40130022EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift */; };
-		4F92126D2514FB58003F51EE /* GoalsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92126C2514FB58003F51EE /* GoalsAppTests.swift */; };
 		4F9212752515012C003F51EE /* ObjectivesMenuViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9212742515012B003F51EE /* ObjectivesMenuViewModelTestCase.swift */; };
 		4F92127725151953003F51EE /* ObjectiveManipulationViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F92127625151953003F51EE /* ObjectiveManipulationViewModelTestCase.swift */; };
 		4FA914FB243D22B800391BCE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA914FA243D22B800391BCE /* Coordinator.swift */; };
@@ -66,7 +65,6 @@
 		4F4012FE22E8C78000CCC26C /* GoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTableViewCell.swift; sourceTree = "<group>"; };
 		4F40130022EA7B9200CCC26C /* ObjectiveManipulationViewControllerProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveManipulationViewControllerProperties.swift; sourceTree = "<group>"; };
 		4F92126A2514FB58003F51EE /* GoalsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F92126C2514FB58003F51EE /* GoalsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsAppTests.swift; sourceTree = "<group>"; };
 		4F92126E2514FB58003F51EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F9212742515012B003F51EE /* ObjectivesMenuViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesMenuViewModelTestCase.swift; sourceTree = "<group>"; };
 		4F92127625151953003F51EE /* ObjectiveManipulationViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectiveManipulationViewModelTestCase.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 		4F92126B2514FB58003F51EE /* GoalsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				4F92126C2514FB58003F51EE /* GoalsAppTests.swift */,
 				4F92126E2514FB58003F51EE /* Info.plist */,
 				4F9212742515012B003F51EE /* ObjectivesMenuViewModelTestCase.swift */,
 				4F92127625151953003F51EE /* ObjectiveManipulationViewModelTestCase.swift */,
@@ -322,7 +319,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F92127725151953003F51EE /* ObjectiveManipulationViewModelTestCase.swift in Sources */,
-				4F92126D2514FB58003F51EE /* GoalsAppTests.swift in Sources */,
 				4F9212752515012C003F51EE /* ObjectivesMenuViewModelTestCase.swift in Sources */,
 				4FAE77C225168D830066916D /* CoreDataServiceFake.swift in Sources */,
 			);

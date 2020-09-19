@@ -12,5 +12,4 @@ import CoreData
 
 
 public class Goal: NSManagedObject {
-    
 }
